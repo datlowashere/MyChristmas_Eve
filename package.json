@@ -1,0 +1,19 @@
+{
+  "name": "my_christmas_eve",
+  "version": "1.0.0",
+  "description": "my christmas eve fall23",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "handlebars": "^4.7.8",
+    "nodemon": "^3.0.2",
+    "path": "^0.12.7"
+  }
+}

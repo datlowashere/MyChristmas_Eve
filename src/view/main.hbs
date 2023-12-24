@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merry Christmas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merienda:wght@500&family=Notable&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background: #C19A6C url("data:image/svg+xml;utf8,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23A1662F' fill-opacity='0.73'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .snowball {
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      position: relative;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      z-index: 1;
+
+    }
+
+    canvas {
+      border-radius: none;
+      z-index: 4;
+    }
+
+    .moon {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background-color: #E8D7C1;
+      box-shadow: 0 0 15px 10px rgba(232, 215, 193, 0.4);
+      border-radius: 50%;
+      margin: 70px;
+      right: 5%;
+      z-index: 3;
+    }
+
+    .window {
+      position: absolute;
+      top: -25px;
+      z-index: 4;
+    }
+
+    .ground {
+      position: absolute;
+      width: 300px;
+      height: 150px;
+      left: 0;
+      bottom: 0;
+      background: white;
+      border-top-right-radius: 130px 40px;
+      z-index: 3;
+
+      &:before {
+        content: " ";
+        position: absolute;
+        width: 200px;
+        height: 140px;
+        top: 10px;
+        right: -150px;
+        background: white;
+        border-radius: 50%;
+      }
+
+      &:after {
+        content: " ";
+        position: absolute;
+        width: 100px;
+        height: 150px;
+        top: 0;
+        right: -205px;
+        background: white;
+        border-top-left-radius: 130px 40px;
+      }
+    }
+
+    .trees {
+      position: absolute;
+      top: 5px;
+      z-index: 2;
+    }
+    .snow-man{
+      position: absolute;
+      bottom: 140px;
+      left: 60px;
+      z-index: 4;  
+      width: 10%; 
+      transform: scaleX(-1);    
+    }
+    .tree {
+      position: absolute;
+      bottom: 120px;
+      left: 30px;
+      z-index: 3;
+      width: 30%;
+    }
+    .tree1 {
+      position: absolute;
+      bottom: 120px;
+      left: 100px;
+      z-index: 2;
+      width: 20%;
+    }  
+    .tree2 {
+      position: absolute;
+      bottom: 110px;
+      right: 0;
+      z-index: 2;
+      width: 25%;
+    }        
+    .signpost{
+      position: absolute;
+      bottom: 115px;
+      right: 40px;
+      z-index: 3;
+      width: 20%;
+    }
+    .bells {
+      display: flex;
+      list-style-type: none;
+    }
+
+    .content {
+      display: block;
+      padding-top: 20px;
+      width: 1100px;
+    }
+    p,a{
+      color: #fff;      
+      font-family: 'Lobster', sans-serif;
+      font-weight: 300;
+      text-align: center !important; 
+      font-size: 2.5em;
+      line-height: 1;
+      text-shadow: 0 0 5px #35a66f;           
+    }
+    p a{
+      color: #fff;
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .content{
+        padding-top: 0;
+        max-width: 400px;
+      }
+      p, p a{
+        font-size: 1rem;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <ul class="bells">
+    </ul>
+    <div class="snowball">
+      <canvas id="snow" width="500" height="500"></canvas>
+      <div class="moon"></div>
+      <img class="window" src="../resources/image/pngfind.com-pixel-png-81666.png" alt="">
+      <img class="trees" src="../resources/image/d278536-removebg-preview-removebg-preview.png">
+      <img class="tree" src="../resources/image/05ee1884c59c0bd55067c08a2fed52d9.jpg">      
+      <img class="tree1" src="../resources/image/05ee1884c59c0bd55067c08a2fed52d9.jpg">      
+      <img class="tree2" src="../resources/image/05ee1884c59c0bd55067c08a2fed52d9.jpg">      
+      <img class="snow-man" src="../resources/image/snowman__44535.webp">
+      <img class="signpost" src="../resources/image/signpostpng.png">      
+      <div class="ground"></div>
+    </div>
+
+    <!-- content-->
+    <div class="content">
+      <p class="split">"Christmas is a season of enjoying the simple things that make life beautiful. May you have great
+        memories that
+        will permanently touch your heart. I wish you so much joy during this season and all through to the New Year !"
+      </p>
+      <br>
+      <p><a> Best Wishes!</a></p>
+      <p><a href="https://www.facebook.com/datlowashere" target="_blank">
+        @datlowashere </a></p>
+     
+    </div>
+  </div>
+  <script>
+
+    // Function to add bells dynamically
+    function addBells() {
+      const bellsContainer = document.querySelector('.bells');
+      const bells = [];
+
+      for (let i = 0; i < 5; i++) {
+        const bellImage = document.createElement('img');
+        bellImage.src = "../resources/image/bells(1).png";
+        bellImage.alt = "";
+
+        const liElement = document.createElement('li');
+        liElement.appendChild(bellImage);
+        bells.push(liElement);
+      }
+
+      bellsContainer.append(...bells);
+    }
+
+    // Call the functions to add bells 
+    addBells();
+    // Get canvas and set width and height of window to fit with the canvas size
+    const canvas = document.getElementById("snow");
+    const ctx = canvas.getContext("2d");
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+
+    const windowImage = document.querySelector(".window");
+    const newWidth = 290;
+    const newHeight = 60;
+    windowImage.style.width = `${canvasWidth + newWidth}px`;
+    windowImage.style.height = `${canvasHeight + newHeight}px`;
+    // Set up snowflake array
+    const snowflakes = [];
+
+    // Set up max number of snowflakes
+    const maxSnowflakes = 100;
+
+    // Set up snowflake object
+    function Snowflake(x, y, radius, speed) {
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.speed = speed;
+    }
+
+    // Function to generate snowflakes
+    function generateSnowflakes() {
+      for (let i = 0; i < maxSnowflakes; i++) {
+        // Generate random x and y coordinates
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+
+        // Generate random radius and speed
+        const radius = Math.random() * 3 + 1;
+        const speed = Math.random() * 1 + 0.5;
+
+        // Push new snowflake to array
+        snowflakes.push(new Snowflake(x, y, radius, speed));
+      }
+    }
+
+    // Function to draw snowflakes
+    function drawSnowflakes() {
+      // Loop through snowflake array
+      for (let i = 0; i < snowflakes.length; i++) {
+        // Set up snowflake object
+        const snowflake = snowflakes[i];
+
+        // Set up canvas context
+        ctx.beginPath();
+        ctx.arc(snowflake.x, snowflake.y, snowflake.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+      }
+    }
+
+    // Function to animate snowflakes
+    function animateSnowflakes() {
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Loop through snowflake array
+      for (let i = 0; i < snowflakes.length; i++) {
+        // Set up snowflake object
+        const snowflake = snowflakes[i];
+
+        // Update snowflake position
+        snowflake.x += snowflake.speed;
+        snowflake.y += snowflake.speed;
+
+        // If snowflake goes off screen, reset its position
+        if (snowflake.x > canvas.width) {
+          snowflake.x = 0;
+        }
+        if (snowflake.y > canvas.height) {
+          snowflake.y = 0;
+        }
+      }
+
+      // Draw snowflakes
+      drawSnowflakes();
+
+      // Repeat animation
+      requestAnimationFrame(animateSnowflakes);
+    }
+
+    // Generate initial snowflakes
+    generateSnowflakes();
+
+    // Start animation
+    animateSnowflakes();
+
+  </script>
+</body>
+
+</html>
